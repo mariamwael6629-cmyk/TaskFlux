@@ -5,8 +5,8 @@ import * as documentsApi from '../api/documents'
 import Icons from '../icons/Icons'
 
 function timeAgo(iso) {
-  const diffMs = Date.now() - new Date(iso).getTime()
-  const mins = Math.floor(diffMs / 60000)
+  const diff = Date.now() - new Date(iso).getTime()
+  const mins = Math.floor(diff / 60000)
   if (mins < 1) return 'just now'
   if (mins < 60) return `${mins}m ago`
   const hours = Math.floor(mins / 60)
@@ -23,10 +23,7 @@ export default function DocumentsPage() {
   useEffect(() => {
     if (!activeWorkspace) return
     setLoading(true)
-    documentsApi
-      .listDocuments(activeWorkspace.id)
-      .then(setDocs)
-      .finally(() => setLoading(false))
+    documentsApi.listDocuments(activeWorkspace.id).then(setDocs).finally(() => setLoading(false))
   }, [activeWorkspace])
 
   const handleAdd = async () => {
@@ -35,47 +32,60 @@ export default function DocumentsPage() {
   }
 
   return (
-    <div style={{ padding: 24, overflowY: 'auto', height: '100%' }}>
+    <div className="page-wrapper">
+      {/* Header */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 24 }}>
-        <div>
-          <h1 style={{ fontSize: 19, fontWeight: 700, color: '#f1f5f9', marginBottom: 4 }}>Documents</h1>
-          <p style={{ fontSize: 11, color: '#64748b' }}>Shared notes, specs, and meeting minutes</p>
+        <div className="page-header" style={{ marginBottom: 0 }}>
+          <h1 className="page-title">Documents</h1>
+          <p className="page-subtitle">Shared notes, specs, and meeting minutes</p>
         </div>
-        <button
-          onClick={handleAdd}
-          style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '6px 14px', borderRadius: 8, fontSize: 12, background: '#4f46e5', color: '#fff', border: 'none', cursor: 'pointer', fontWeight: 600 }}
-        >
-          + New Doc
+        <button onClick={handleAdd} className="btn btn-primary btn-sm">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 5v14M5 12h14"/>
+          </svg>
+          New Doc
         </button>
       </div>
 
       {loading ? (
-        <p style={{ color: '#475569' }}>Loading...</p>
+        <div className="loading-center" style={{ height: 200 }}>Loading documents…</div>
+      ) : docs.length === 0 ? (
+        <div className="empty-state">
+          <div className="empty-icon">📄</div>
+          <p style={{ fontSize: 14, fontWeight: 500, color: 'var(--text-2)' }}>No documents yet</p>
+          <p style={{ fontSize: 12 }}>Create your first document to get started</p>
+          <button onClick={handleAdd} className="btn btn-secondary btn-sm" style={{ marginTop: 12 }}>
+            Create document
+          </button>
+        </div>
       ) : (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
           {docs.map((doc) => (
             <button
               key={doc.id}
               onClick={() => navigate(`/documents/${doc.id}`)}
-              style={{ display: 'flex', alignItems: 'center', gap: 16, padding: '14px 16px', background: 'rgba(30,41,59,0.6)', border: '1px solid rgba(51,65,85,0.5)', borderRadius: 12, textAlign: 'left', cursor: 'pointer', width: '100%' }}
+              style={{
+                display: 'flex', alignItems: 'center', gap: 16,
+                padding: '14px 18px',
+                background: 'var(--sf2)', border: '1px solid var(--border)',
+                borderRadius: 'var(--r-lg)', textAlign: 'left',
+                cursor: 'pointer', width: '100%',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--accent-b)'; e.currentTarget.style.background = 'var(--sf3)' }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.background = 'var(--sf2)' }}
             >
-              <span style={{ fontSize: 22 }}>{doc.emoji}</span>
-              <div style={{ flex: 1 }}>
-                <p style={{ fontSize: 13, fontWeight: 500, color: '#e2e8f0', marginBottom: 2 }}>{doc.title}</p>
-                <p style={{ fontSize: 11, color: '#64748b' }}>
+              <span style={{ fontSize: 22, flexShrink: 0, lineHeight: 1 }}>{doc.emoji}</span>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <p style={{ fontSize: 13, fontWeight: 500, color: 'var(--text)', marginBottom: 2, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                  {doc.title}
+                </p>
+                <p style={{ fontSize: 11, color: 'var(--text-3)' }}>
                   {doc.author} · {timeAgo(doc.updated_at)}
                 </p>
               </div>
-              {Icons.ArrowRight}
+              <span style={{ color: 'var(--text-3)', display: 'flex', flexShrink: 0 }}>{Icons.ArrowRight}</span>
             </button>
           ))}
-          {docs.length === 0 && (
-            <div style={{ textAlign: 'center', padding: '64px 0', color: '#475569' }}>
-              <div style={{ fontSize: 40, marginBottom: 12, opacity: 0.3 }}>📄</div>
-              <p>No documents yet</p>
-              <p style={{ fontSize: 11, marginTop: 4 }}>Create your first document to get started</p>
-            </div>
-          )}
         </div>
       )}
     </div>

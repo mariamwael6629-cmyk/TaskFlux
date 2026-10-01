@@ -17,28 +17,23 @@ export default function BoardPage() {
     setError('')
     try {
       const boards = await boardsApi.listBoards(activeWorkspace.id)
-      if (boards.length === 0) {
-        setBoard(null)
-        return
-      }
+      if (boards.length === 0) { setBoard(null); return }
       const detail = await boardsApi.getBoard(boards[0].id)
       setBoard(detail)
-    } catch (err) {
+    } catch {
       setError('Could not load board')
     } finally {
       setLoading(false)
     }
   }, [activeWorkspace])
 
-  useEffect(() => {
-    loadBoard()
-  }, [loadBoard])
+  useEffect(() => { loadBoard() }, [loadBoard])
 
   const handleAddCard = async (columnId, cardData) => {
     const card = await boardsApi.createCard(columnId, cardData)
     setBoard((b) => ({
       ...b,
-      columns: b.columns.map((c) => (c.id === columnId ? { ...c, cards: [...c.cards, card] } : c)),
+      columns: b.columns.map((c) => c.id === columnId ? { ...c, cards: [...c.cards, card] } : c),
     }))
   }
 
@@ -63,7 +58,7 @@ export default function BoardPage() {
       const reindex = srcColId === dstColId ? [dstCol] : [srcCol, dstCol]
       await Promise.all(
         reindex.flatMap((col) =>
-          col.cards.map((c, idx) => (c.id === moved.id ? null : boardsApi.updateCard(c.id, { order: idx })))
+          col.cards.map((c, idx) => c.id === moved.id ? null : boardsApi.updateCard(c.id, { order: idx }))
         ).filter(Boolean)
       )
     } catch {
@@ -71,58 +66,59 @@ export default function BoardPage() {
     }
   }
 
-  if (loading) {
-    return <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#475569' }}>Loading board...</div>
-  }
-
-  if (error) {
-    return <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fb7185' }}>{error}</div>
-  }
-
-  if (!board) {
-    return <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#475569' }}>No board found</div>
-  }
+  if (loading) return <div className="loading-center">Loading board…</div>
+  if (error) return <div className="loading-center" style={{ color: 'var(--red)' }}>{error}</div>
+  if (!board) return <div className="loading-center">No board found in this workspace</div>
 
   const totalCards = board.columns.reduce((a, c) => a + c.cards.length, 0)
   const inProgress = board.columns.find((c) => c.title === 'In Progress')?.cards.length || 0
   const done = board.columns.find((c) => c.title === 'Done')?.cards.length || 0
   const overdue = board.columns.reduce(
-    (a, c) => a + c.cards.filter((card) => card.due_date && card.due_date < new Date().toISOString().slice(0, 10) && c.title !== 'Done').length,
-    0
+    (a, c) => a + c.cards.filter((card) => card.due_date && card.due_date < new Date().toISOString().slice(0, 10) && c.title !== 'Done').length, 0
   )
 
-  const stats = [
-    { label: 'Total Tasks', value: totalCards, icon: Icons.Target, bg: 'rgba(99,102,241,0.08)', border: 'rgba(99,102,241,0.2)', color: '#818cf8' },
-    { label: 'In Progress', value: inProgress, icon: Icons.Zap, bg: 'rgba(139,92,246,0.08)', border: 'rgba(139,92,246,0.2)', color: '#a78bfa' },
-    { label: 'Completed', value: done, icon: Icons.CheckCircle, bg: 'rgba(16,185,129,0.08)', border: 'rgba(16,185,129,0.2)', color: '#34d399' },
-    { label: 'Overdue', value: overdue, icon: Icons.Alert, bg: 'rgba(244,63,94,0.08)', border: 'rgba(244,63,94,0.2)', color: '#fb7185' },
+  const boardStats = [
+    { label: 'Total', value: totalCards, color: 'var(--text-2)', dot: 'var(--border)' },
+    { label: 'In Progress', value: inProgress, color: 'var(--accent-h)', dot: 'var(--accent)' },
+    { label: 'Completed', value: done, color: 'var(--green)', dot: 'var(--green)' },
+    { label: 'Overdue', value: overdue, color: 'var(--red)', dot: 'var(--red)' },
   ]
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100%', overflow: 'hidden' }}>
-      <div style={{ flexShrink: 0, padding: '20px 24px 16px', borderBottom: '1px solid #1e293b' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
+      {/* Header */}
+      <div style={{ flexShrink: 0, padding: '20px 24px 16px', borderBottom: '1px solid var(--border-m)' }}>
+        <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 16 }}>
           <div>
-            <h1 style={{ fontSize: 19, fontWeight: 700, color: '#f1f5f9', marginBottom: 2 }}>{board.name}</h1>
-            <p style={{ fontSize: 11, color: '#64748b' }}>Drag cards between columns to update status</p>
+            <h1 style={{ fontSize: 19, fontWeight: 700, color: 'var(--text)', marginBottom: 2 }}>{board.name}</h1>
+            <p style={{ fontSize: 12, color: 'var(--text-3)' }}>Drag cards between columns to update status</p>
           </div>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 10 }}>
-          {stats.map((s) => (
-            <div key={s.label} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 12px', borderRadius: 12, background: s.bg, border: `1px solid ${s.border}`, color: s.color }}>
-              {s.icon}
-              <div>
-                <div style={{ fontSize: 20, fontWeight: 700, lineHeight: 1 }}>{s.value}</div>
-                <div style={{ fontSize: 9, opacity: 0.65, marginTop: 2 }}>{s.label}</div>
-              </div>
+
+        {/* Stats row */}
+        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+          {boardStats.map((s) => (
+            <div
+              key={s.label}
+              style={{
+                display: 'flex', alignItems: 'center', gap: 8,
+                padding: '8px 14px',
+                background: 'var(--sf2)', border: '1px solid var(--border)',
+                borderRadius: 'var(--r)', fontSize: 13,
+              }}
+            >
+              <div style={{ width: 6, height: 6, borderRadius: '50%', background: s.dot, flexShrink: 0 }} />
+              <span style={{ fontWeight: 700, color: s.color, fontFamily: 'Space Grotesk, sans-serif', fontSize: 16 }}>{s.value}</span>
+              <span style={{ color: 'var(--text-3)', fontSize: 12 }}>{s.label}</span>
             </div>
           ))}
         </div>
       </div>
 
+      {/* Board columns */}
       <div style={{ flex: 1, overflowX: 'auto', overflowY: 'hidden' }}>
         <DragDropContext onDragEnd={onDragEnd}>
-          <div style={{ display: 'flex', gap: 16, padding: 24, height: '100%', minWidth: 'max-content' }}>
+          <div style={{ display: 'flex', gap: 14, padding: '20px 24px', height: '100%', minWidth: 'max-content', alignItems: 'flex-start' }}>
             {board.columns.map((column) => (
               <KanbanColumn key={column.id} column={column} onAddCard={handleAddCard} />
             ))}
