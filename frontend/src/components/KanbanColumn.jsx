@@ -2,31 +2,33 @@ import { useState } from 'react'
 import { Droppable } from '@hello-pangea/dnd'
 import KanbanCard from './KanbanCard'
 import AddCardForm from './AddCardForm'
-import Icons from '../icons/Icons'
 
-const COL_ICONS = {
-  'To Do': Icons.Circle,
-  'In Progress': Icons.Trending,
-  'Under Review': Icons.Alert,
-  Done: Icons.CheckCircle,
+const COL_COLORS = {
+  'To Do': '#8484b8',
+  'In Progress': 'var(--accent-h)',
+  'Under Review': 'var(--amber)',
+  'Done': 'var(--green)',
 }
 
 export default function KanbanColumn({ column, onAddCard }) {
   const [adding, setAdding] = useState(false)
-  const icon = COL_ICONS[column.title] || Icons.Circle
+  const dotColor = COL_COLORS[column.title] || column.color || 'var(--text-3)'
 
   return (
-    <div style={{ flexShrink: 0, width: 288 }}>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12, padding: '0 4px' }}>
+    <div style={{ flexShrink: 0, width: 286, display: 'flex', flexDirection: 'column' }}>
+      {/* Column header */}
+      <div className="col-header">
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <span style={{ color: column.color }}>{icon}</span>
-          <h3 style={{ fontSize: 13, fontWeight: 600, color: '#cbd5e1' }}>{column.title}</h3>
-          <span style={{ fontSize: 11, background: '#1e293b', border: '1px solid #334155', color: '#64748b', padding: '1px 8px', borderRadius: 12, fontWeight: 500, minWidth: 22, textAlign: 'center' }}>
-            {column.cards.length}
-          </span>
+          <div className="col-dot" style={{ background: dotColor }} />
+          <h3 style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-2)', letterSpacing: '.01em' }}>{column.title}</h3>
+          <span className="col-count">{column.cards.length}</span>
         </div>
-        <button style={{ background: 'none', border: 'none', color: '#475569', cursor: 'pointer', padding: 4, borderRadius: 8, display: 'flex', alignItems: 'center' }}>
-          {Icons.MoreH}
+        <button
+          style={{ padding: 4, borderRadius: 6, background: 'none', border: 'none', color: 'var(--text-3)', cursor: 'pointer', display: 'flex' }}
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/>
+          </svg>
         </button>
       </div>
 
@@ -36,11 +38,12 @@ export default function KanbanColumn({ column, onAddCard }) {
             ref={provided.innerRef}
             {...provided.droppableProps}
             style={{
-              minHeight: 120,
-              borderRadius: 12,
-              padding: 8,
-              background: snapshot.isDraggingOver ? 'rgba(99,102,241,0.05)' : 'transparent',
-              border: `2px ${snapshot.isDraggingOver ? 'dashed rgba(99,102,241,0.3)' : 'solid transparent'}`,
+              minHeight: 80,
+              borderRadius: 'var(--r)',
+              padding: 4,
+              border: `2px ${snapshot.isDraggingOver ? 'dashed var(--accent-b)' : 'solid transparent'}`,
+              background: snapshot.isDraggingOver ? 'var(--accent-s)' : 'transparent',
+              flex: 1,
             }}
           >
             {column.cards.map((card, idx) => (
@@ -53,18 +56,18 @@ export default function KanbanColumn({ column, onAddCard }) {
 
       {adding ? (
         <AddCardForm
-          onAdd={(card) => {
-            onAddCard(column.id, card)
-            setAdding(false)
-          }}
+          onAdd={(card) => { onAddCard(column.id, card); setAdding(false) }}
           onCancel={() => setAdding(false)}
         />
       ) : (
         <button
           onClick={() => setAdding(true)}
-          style={{ width: '100%', marginTop: 8, display: 'flex', alignItems: 'center', gap: 8, padding: '8px 12px', borderRadius: 12, background: 'none', border: '1px solid transparent', color: '#475569', cursor: 'pointer', fontSize: 12 }}
+          className="add-card-btn"
         >
-          <span style={{ color: '#6366f1', fontSize: 16, lineHeight: 1 }}>+</span> Add card
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 5v14M5 12h14"/>
+          </svg>
+          Add card
         </button>
       )}
     </div>

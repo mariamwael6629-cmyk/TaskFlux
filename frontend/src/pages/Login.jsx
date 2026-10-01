@@ -28,53 +28,80 @@ export default function Login() {
   }
 
   return (
-    <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#020617', color: '#f1f5f9' }}>
-      <form onSubmit={handleSubmit} style={{ width: 360, background: 'rgba(30,41,59,0.6)', border: '1px solid rgba(51,65,85,0.5)', borderRadius: 16, padding: 32 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 24 }}>
-          <div style={{ width: 32, height: 32, borderRadius: 8, background: 'linear-gradient(135deg,#6366f1,#8b5cf6)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 15 }}>✦</div>
-          <span style={{ fontSize: 18, fontWeight: 700, fontFamily: 'Space Grotesk, sans-serif' }}>TaskFlux</span>
+    <div className="auth-bg">
+      <div className="auth-card">
+        {/* Brand */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 32 }}>
+          <div style={{
+            width: 38, height: 38, borderRadius: 10,
+            background: 'var(--accent)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            flexShrink: 0,
+          }}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+            </svg>
+          </div>
+          <span style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 17, fontWeight: 700, color: 'var(--text)' }}>
+            TaskFlux
+          </span>
         </div>
-        <h1 style={{ fontSize: 18, fontWeight: 700, marginBottom: 4, fontFamily: 'Space Grotesk, sans-serif' }}>Welcome back</h1>
-        <p style={{ fontSize: 12, color: '#64748b', marginBottom: 20 }}>Sign in to continue to your workspaces</p>
+
+        <h1 style={{ fontSize: 22, fontWeight: 700, color: 'var(--text)', marginBottom: 6, lineHeight: 1.2 }}>
+          Welcome back
+        </h1>
+        <p style={{ fontSize: 13, color: 'var(--text-3)', marginBottom: 28 }}>
+          Sign in to continue to your workspace
+        </p>
 
         {error && (
-          <div style={{ background: 'rgba(244,63,94,0.1)', border: '1px solid rgba(244,63,94,0.2)', color: '#fb7185', fontSize: 12, padding: '8px 12px', borderRadius: 8, marginBottom: 16 }}>
-            {error}
-          </div>
+          <div className="auth-error" style={{ marginBottom: 20 }}>{error}</div>
         )}
 
-        <label style={{ fontSize: 11, color: '#94a3b8', display: 'block', marginBottom: 6 }}>Email</label>
-        <input
-          type="email"
-          required
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="you@example.com"
-          style={{ width: '100%', background: 'rgba(51,65,85,0.6)', color: '#e2e8f0', fontSize: 13, padding: '10px 12px', borderRadius: 8, border: '1px solid #334155', outline: 'none', marginBottom: 14 }}
-        />
+        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+          <div className="form-group">
+            <label className="form-label">Email address</label>
+            <input
+              type="email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="you@example.com"
+              className="input"
+            />
+          </div>
 
-        <label style={{ fontSize: 11, color: '#94a3b8', display: 'block', marginBottom: 6 }}>Password</label>
-        <input
-          type="password"
-          required
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="••••••••"
-          style={{ width: '100%', background: 'rgba(51,65,85,0.6)', color: '#e2e8f0', fontSize: 13, padding: '10px 12px', borderRadius: 8, border: '1px solid #334155', outline: 'none', marginBottom: 20 }}
-        />
+          <div className="form-group">
+            <label className="form-label">Password</label>
+            <input
+              type="password"
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="••••••••"
+              className="input"
+            />
+          </div>
 
-        <button
-          type="submit"
-          disabled={submitting}
-          style={{ width: '100%', background: '#4f46e5', color: '#fff', fontSize: 13, fontWeight: 600, padding: '10px 0', borderRadius: 8, border: 'none', cursor: submitting ? 'default' : 'pointer', opacity: submitting ? 0.7 : 1 }}
-        >
-          {submitting ? 'Signing in...' : 'Sign In'}
-        </button>
+          <button
+            type="submit"
+            disabled={submitting}
+            className="btn btn-primary"
+            style={{ width: '100%', marginTop: 4, padding: '10px 0', fontSize: 13, fontWeight: 600 }}
+          >
+            {submitting ? 'Signing in…' : 'Sign In'}
+          </button>
+        </form>
 
-        <p style={{ fontSize: 12, color: '#64748b', marginTop: 18, textAlign: 'center' }}>
-          Don't have an account? <Link to="/register" style={{ color: '#818cf8', fontWeight: 600 }}>Sign up</Link>
+        <div className="divider" style={{ margin: '24px 0' }} />
+
+        <p style={{ fontSize: 12, color: 'var(--text-3)', textAlign: 'center' }}>
+          Don't have an account?{' '}
+          <Link to="/register" style={{ color: 'var(--accent-h)', fontWeight: 600 }}>
+            Create account
+          </Link>
         </p>
-      </form>
+      </div>
     </div>
   )
 }
