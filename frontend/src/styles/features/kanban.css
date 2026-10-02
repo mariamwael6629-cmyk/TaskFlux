@@ -1,0 +1,66 @@
+/* ============================================================
+   KANBAN
+   ============================================================ */
+.col-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  padding: 0 2px;
+}
+.col-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.col-count {
+  font-size: 11px;
+  background: var(--sf3);
+  border: 1px solid var(--border);
+  color: var(--text-3);
+  padding: 1px 8px;
+  border-radius: 999px;
+  font-weight: 500;
+}
+.drop-area {
+  min-height: 60px;
+  border-radius: var(--r);
+  padding: 4px;
+}
+.drop-area-over {
+  background: var(--accent-s);
+  border: 2px dashed var(--accent-b) !important;
+}
+
+.k-card {
+  background: var(--sf2);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 12px 14px;
+  cursor: pointer;
+  user-select: none;
+  margin-bottom: 8px;
+}
+.k-card:hover { border-color: var(--accent-b); }
+.k-card-dragging {
+  background: var(--sf3) !important;
+  border-color: var(--accent-b) !important;
+  box-shadow: var(--shadow-lg), 0 0 0 1px var(--accent-b) !important;
+}
+
+.add-card-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  margin-top: 6px;
+  border-radius: var(--r-sm);
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-3);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+}
+.add-card-btn:hover { background: var(--sf3); color: var(--text-2); border-color: var(--border); }

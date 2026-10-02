@@ -1,0 +1,13 @@
+/* ============================================================
+   TYPOGRAPHY HELPERS
+   ============================================================ */
+.section-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .09em;
+  color: var(--text-3);
+}
+.form-label { font-size: 12px; font-weight: 500; color: var(--text-2); }
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.divider    { height: 1px; background: var(--border); }

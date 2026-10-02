@@ -1,0 +1,79 @@
+/* ============================================================
+   TASKFLUX — DESIGN SYSTEM v2
+   ============================================================ */
+
+/* --- Tokens ------------------------------------------------- */
+:root {
+  --bg:        #05050f;
+  --surface:   #0c0c1c;
+  --sf2:       #111122;
+  --sf3:       #191930;
+  --border:    #202040;
+  --border-m:  #181835;
+
+  --text:      #e2e2f5;
+  --text-2:    #8484b8;
+  --text-3:    #484870;
+
+  --accent:    #5050c8;
+  --accent-h:  #6464d8;
+  --accent-s:  rgba(80,80,200,.10);
+  --accent-b:  rgba(80,80,200,.28);
+
+  --green:     #1ea882;
+  --green-s:   rgba(30,168,130,.10);
+  --green-b:   rgba(30,168,130,.28);
+
+  --red:       #c04040;
+  --red-s:     rgba(192,64,64,.10);
+  --red-b:     rgba(192,64,64,.28);
+
+  --amber:     #bf8828;
+  --amber-s:   rgba(191,136,40,.10);
+  --amber-b:   rgba(191,136,40,.28);
+
+  --purple:    #9040cc;
+  --purple-s:  rgba(144,64,204,.10);
+  --purple-b:  rgba(144,64,204,.28);
+
+  --r-sm:  6px;
+  --r:     10px;
+  --r-lg:  16px;
+  --r-xl:  24px;
+
+  --shadow-sm: 0 1px 4px rgba(0,0,0,.6);
+  --shadow:    0 4px 16px rgba(0,0,0,.5);
+  --shadow-lg: 0 10px 40px rgba(0,0,0,.7);
+  --shadow-ac: 0 4px 20px rgba(80,80,200,.35);
+}
+
+/* --- Reset -------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body, #root { height: 100%; background: var(--bg); }
+body {
+  font-family: 'Inter', 'DM Sans', sans-serif;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--text);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; }
+input, textarea, select { font-family: inherit; }
+input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(0.5); }
+
+/* --- Scrollbar --------------------------------------------- */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--sf3); }
+
+/* --- Transitions ------------------------------------------- */
+* {
+  transition-property: color, background-color, border-color, opacity, transform, box-shadow;
+  transition-duration: 150ms;
+  transition-timing-function: ease;
+}

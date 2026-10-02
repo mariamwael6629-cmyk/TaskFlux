@@ -1,0 +1,45 @@
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+.nav-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 8px 10px;
+  border-radius: var(--r);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: left;
+}
+.nav-item:hover { background: var(--sf3); color: var(--text-2); }
+.nav-item-active {
+  background: var(--accent-s) !important;
+  border-color: var(--accent-b) !important;
+  color: var(--accent-h) !important;
+}
+
+.ws-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  border-radius: var(--r-sm);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  color: var(--text-3);
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.ws-item:hover { background: var(--sf3); color: var(--text-2); }
+.ws-item-active { background: var(--sf3) !important; color: var(--text) !important; }

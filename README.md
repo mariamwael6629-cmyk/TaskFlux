@@ -53,7 +53,9 @@ TaskFlux/
       │   ├── components/      # Reusable UI (Sidebar, Kanban, Modals)
       │   ├── context/         # AuthContext & AppState Contexts
       │   ├── pages/           # App Views (Dashboard, Workspace, Editor, Auth)
-      │   └── icons/           # Custom inline SVG asset set
+      │   ├── icons/           # Custom inline SVG asset set
+      │   ├── styles/          # base (tokens/reset), components/, layout/, features/
+      │   └── index.css        # Imports every stylesheet under styles/ in cascade order
       └── .env.example
 
 ```

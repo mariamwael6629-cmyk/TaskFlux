@@ -1,0 +1,17 @@
+/* ============================================================
+   INPUTS
+   ============================================================ */
+.input {
+  width: 100%;
+  background: var(--sf3);
+  color: var(--text);
+  font-size: 13px;
+  font-family: inherit;
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  outline: none;
+}
+.input::placeholder { color: var(--text-3); }
+.input:focus { border-color: var(--accent-b); }
+.input-sm { font-size: 12px; padding: 7px 10px; }

@@ -1,0 +1,43 @@
+/* ============================================================
+   AUTH
+   ============================================================ */
+.auth-bg {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  padding: 24px 16px;
+  position: relative;
+  overflow: hidden;
+}
+.auth-bg::before {
+  content: '';
+  position: absolute;
+  top: -250px; left: 50%;
+  transform: translateX(-50%);
+  width: 900px; height: 900px;
+  background: radial-gradient(circle, rgba(80,80,200,.07) 0%, transparent 65%);
+  pointer-events: none;
+}
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  padding: 44px 40px;
+  position: relative;
+  box-shadow: var(--shadow-lg);
+}
+@media (max-width: 480px) {
+  .auth-card { padding: 32px 24px; }
+}
+.auth-error {
+  background: var(--red-s);
+  border: 1px solid var(--red-b);
+  color: var(--red);
+  font-size: 12px;
+  padding: 10px 14px;
+  border-radius: var(--r-sm);
+}

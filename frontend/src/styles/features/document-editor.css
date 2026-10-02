@@ -1,0 +1,17 @@
+/* ============================================================
+   DOCUMENT EDITOR
+   ============================================================ */
+.toolbar-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 9px;
+  border-radius: var(--r-sm);
+  font-size: 11px;
+  color: var(--text-3);
+  background: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-weight: 500;
+}
+.toolbar-btn:hover { background: var(--sf3); color: var(--text-2); border-color: var(--border); }

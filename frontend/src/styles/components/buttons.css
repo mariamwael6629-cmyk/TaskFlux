@@ -1,0 +1,47 @@
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: var(--r-sm);
+  padding: 8px 16px;
+  white-space: nowrap;
+  outline: none;
+  user-select: none;
+}
+.btn:disabled { opacity: .5; cursor: not-allowed; pointer-events: none; }
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+.btn-primary:hover { background: var(--accent-h); border-color: var(--accent-h); box-shadow: var(--shadow-ac); }
+
+.btn-secondary {
+  background: var(--sf3);
+  color: var(--text-2);
+  border-color: var(--border);
+}
+.btn-secondary:hover { background: var(--sf2); color: var(--text); border-color: var(--accent-b); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-3);
+  border-color: transparent;
+}
+.btn-ghost:hover { background: var(--sf3); color: var(--text-2); }
+
+.btn-sm  { font-size: 12px; padding: 6px 12px; }
+.btn-xs  { font-size: 11px; padding: 4px 9px; border-radius: 5px; }
+.btn-icon   { padding: 7px; border-radius: var(--r-sm); aspect-ratio: 1; }
+.btn-icon-sm{ padding: 5px; border-radius: var(--r-sm); aspect-ratio: 1; }
