@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import * as documentsApi from '../api/documents'
 import Icons from '../icons/Icons'
+import { DocMark } from '../components/Marks'
 
 function renderMd(text) {
   return text.split('\n').map((line, i) => {
@@ -88,7 +89,7 @@ export default function DocumentEditorPage() {
       <div style={{ flexShrink: 0, padding: '16px 24px', borderBottom: '1px solid var(--border-m)' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, flex: 1, minWidth: 0 }}>
-            <span style={{ fontSize: 24, lineHeight: 1, flexShrink: 0 }}>{doc.emoji}</span>
+            <DocMark size={24} />
             <input
               value={title}
               onChange={(e) => { setTitle(e.target.value); setSaved(false) }}

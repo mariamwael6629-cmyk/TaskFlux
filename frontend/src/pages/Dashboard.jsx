@@ -6,6 +6,7 @@ import * as boardsApi from '../api/boards'
 import * as documentsApi from '../api/documents'
 import * as workspacesApi from '../api/workspaces'
 import Icons from '../icons/Icons'
+import { DocMark, WorkspaceMark } from '../components/Marks'
 
 function getGreeting() {
   const h = new Date().getHours()
@@ -92,7 +93,7 @@ export default function Dashboard() {
       {/* Greeting */}
       <div style={{ marginBottom: 28 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
-          {activeWorkspace && <span style={{ fontSize: 24, lineHeight: 1 }}>{activeWorkspace.emoji}</span>}
+          {activeWorkspace && <WorkspaceMark workspace={activeWorkspace} size={30} />}
           <h1 style={{ fontSize: 22, fontWeight: 700, color: 'var(--text)' }}>
             {getGreeting()}, {user?.name?.split(' ')[0]}
           </h1>
@@ -148,7 +149,7 @@ export default function Dashboard() {
                     onMouseEnter={e => { e.currentTarget.style.background = 'var(--sf3)'; e.currentTarget.style.borderColor = 'var(--border)' }}
                     onMouseLeave={e => { e.currentTarget.style.background = 'none'; e.currentTarget.style.borderColor = 'transparent' }}
                   >
-                    <span style={{ fontSize: 18, flexShrink: 0 }}>{d.emoji}</span>
+                    <DocMark size={18} />
                     <div style={{ flex: 1, minWidth: 0 }}>
                       <p style={{ fontSize: 13, fontWeight: 500, color: 'var(--text)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{d.title}</p>
                       <p style={{ fontSize: 11, color: 'var(--text-3)', marginTop: 1 }}>{d.author}</p>

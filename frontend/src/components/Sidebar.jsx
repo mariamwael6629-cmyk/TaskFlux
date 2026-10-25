@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { useApp } from '../context/AppContext'
 import Icons from '../icons/Icons'
+import { WorkspaceMark } from './Marks'
 
 const NAV = [
   { to: '/', label: 'Dashboard', icon: Icons.Dashboard, end: true },
@@ -147,7 +148,7 @@ export default function Sidebar() {
                 onClick={() => setActiveWorkspaceId(ws.id)}
                 className={`ws-item${activeWorkspaceId === ws.id ? ' ws-item-active' : ''}`}
               >
-                <span style={{ fontSize: 15, flexShrink: 0 }}>{ws.emoji}</span>
+                <WorkspaceMark workspace={ws} size={18} />
                 <span style={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis' }}>{ws.name}</span>
                 {activeWorkspaceId === ws.id && (
                   <div style={{ width: 6, height: 6, borderRadius: '50%', background: ws.color || 'var(--accent)', flexShrink: 0 }} />

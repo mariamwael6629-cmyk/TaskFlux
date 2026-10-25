@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useApp } from '../context/AppContext'
 import * as documentsApi from '../api/documents'
 import Icons from '../icons/Icons'
+import { DocMark } from '../components/Marks'
 
 function timeAgo(iso) {
   const diff = Date.now() - new Date(iso).getTime()
@@ -74,7 +75,7 @@ export default function DocumentsPage() {
               onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--accent-b)'; e.currentTarget.style.background = 'var(--sf3)' }}
               onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.background = 'var(--sf2)' }}
             >
-              <span style={{ fontSize: 22, flexShrink: 0, lineHeight: 1 }}>{doc.emoji}</span>
+              <DocMark size={22} />
               <div style={{ flex: 1, minWidth: 0 }}>
                 <p style={{ fontSize: 13, fontWeight: 500, color: 'var(--text)', marginBottom: 2, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                   {doc.title}

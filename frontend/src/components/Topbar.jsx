@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { useApp } from '../context/AppContext'
 import { useAuth } from '../context/AuthContext'
 import Icons from '../icons/Icons'
+import { WorkspaceMark } from './Marks'
 
 const VIEW_LABELS = {
   '/board': 'Kanban Board',
@@ -46,7 +47,7 @@ export default function Topbar() {
       <div style={{ display: 'flex', alignItems: 'center', gap: 7, flex: 1, overflow: 'hidden' }}>
         {activeWorkspace && (
           <>
-            <span style={{ fontSize: 14, flexShrink: 0 }}>{activeWorkspace.emoji}</span>
+            <WorkspaceMark workspace={activeWorkspace} size={16} />
             <span style={{ fontSize: 12, color: 'var(--text-3)', fontWeight: 500, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: 140 }}>
               {activeWorkspace.name}
             </span>
