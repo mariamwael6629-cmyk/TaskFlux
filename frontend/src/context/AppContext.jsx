@@ -43,7 +43,7 @@ export function AppProvider({ children }) {
 
   const addWorkspace = useCallback(async (name) => {
     const emojis = ['🌟', '💎', '🔥', '🎯', '🌊', '⚡', '🦋']
-    const colors = ['#D37E69', '#D37E69', '#A94931', '#9C432D', '#f59e0b', '#ef4444']
+    const colors = ['#D37E69', '#D37E69', '#A94931', '#9C432D', '#D36A2D', '#ef4444']
     const ws = await workspacesApi.createWorkspace({
       name,
       emoji: emojis[Math.floor(Math.random() * emojis.length)],

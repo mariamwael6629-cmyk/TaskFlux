@@ -20,17 +20,17 @@
   --accent-s:  rgba(200,104,80,.10);
   --accent-b:  rgba(200,104,80,.28);
 
-  --green:     #B39A62;
-  --green-s:   rgba(179,154,98,.12);
-  --green-b:   rgba(179,154,98,.30);
+  --green:     #B38062;
+  --green-s:   rgba(179,128,98,.12);
+  --green-b:   rgba(179,128,98,.30);
 
   --red:       #c04040;
   --red-s:     rgba(192,64,64,.10);
   --red-b:     rgba(192,64,64,.28);
 
-  --amber:     #bf8828;
-  --amber-s:   rgba(191,136,40,.10);
-  --amber-b:   rgba(191,136,40,.28);
+  --amber:     #BF5F28;
+  --amber-s:   rgba(191,95,40,.10);
+  --amber-b:   rgba(191,95,40,.28);
 
   --purple:    #C95E43;
   --purple-s:  rgba(201,94,67,.10);
