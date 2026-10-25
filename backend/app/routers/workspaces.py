@@ -11,7 +11,7 @@ from app.schemas.workspace import MemberCreate, MemberOut, WorkspaceCreate, Work
 router = APIRouter(prefix="/api/workspaces", tags=["workspaces"])
 
 DEFAULT_COLUMNS = [
-    {"title": "To Do", "color": "#867869"},
+    {"title": "To Do", "color": "#7C7673"},
     {"title": "In Progress", "color": "#D37E69"},
     {"title": "Under Review", "color": "#D36A2D"},
     {"title": "Done", "color": "#B38062"},

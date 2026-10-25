@@ -41,7 +41,7 @@ class CardOut(BaseModel):
 
 class ColumnCreate(BaseModel):
     title: str = Field(min_length=1, max_length=120)
-    color: str = "#867869"
+    color: str = "#7C7673"
 
 
 class ColumnOut(BaseModel):

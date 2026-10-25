@@ -4,16 +4,16 @@
 
 /* --- Tokens ------------------------------------------------- */
 :root {
-  --bg:        #0B0A09;
-  --surface:   #161412;
-  --sf2:       #1D1A16;
-  --sf3:       #292420;
+  --bg:        #0A0A0A;
+  --surface:   #151413;
+  --sf2:       #1B1918;
+  --sf3:       #262423;
   --border:    #402620;
-  --border-m:  #2B2722;
+  --border-m:  #282625;
 
-  --text:      #EEECE9;
-  --text-2:    #AA9E92;
-  --text-3:    #675C51;
+  --text:      #ECEBEB;
+  --text-2:    #A29D9A;
+  --text-3:    #605B58;
 
   --accent:    #C86850;
   --accent-h:  #D37E69;
