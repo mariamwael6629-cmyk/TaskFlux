@@ -42,7 +42,7 @@ export default function Login() {
               <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
             </svg>
           </div>
-          <span style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 17, fontWeight: 700, color: 'var(--text)' }}>
+          <span style={{ fontFamily: 'Bitter, Georgia, serif', fontSize: 17, fontWeight: 700, color: 'var(--text)' }}>
             TaskFlux
           </span>
         </div>

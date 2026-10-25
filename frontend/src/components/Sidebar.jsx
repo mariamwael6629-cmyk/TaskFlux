@@ -31,10 +31,10 @@ export default function Sidebar() {
         <div
           onClick={() => setSidebarOpen(false)}
           className="mobile-overlay"
-          style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.65)', zIndex: 20 }}
+          style={{ position: 'fixed', inset: 0, background: 'rgba(27,34,56,0.45)', zIndex: 20 }}
         />
       )}
-      <aside style={{
+      <aside className={`tf-sidebar${sidebarOpen ? ' open' : ''}`} style={{
         width: W,
         flexShrink: 0,
         height: '100%',
@@ -68,7 +68,7 @@ export default function Sidebar() {
             </svg>
           </div>
           {sidebarOpen && (
-            <span style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 15, fontWeight: 700, color: 'var(--text)', whiteSpace: 'nowrap' }}>
+            <span style={{ fontFamily: 'Bitter, Georgia, serif', fontSize: 15, fontWeight: 700, color: 'var(--text)', whiteSpace: 'nowrap' }}>
               TaskFlux
             </span>
           )}

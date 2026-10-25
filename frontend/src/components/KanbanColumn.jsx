@@ -4,7 +4,7 @@ import KanbanCard from './KanbanCard'
 import AddCardForm from './AddCardForm'
 
 const COL_COLORS = {
-  'To Do': '#8484b8',
+  'To Do': 'var(--text-3)',
   'In Progress': 'var(--accent-h)',
   'Under Review': 'var(--amber)',
   'Done': 'var(--green)',

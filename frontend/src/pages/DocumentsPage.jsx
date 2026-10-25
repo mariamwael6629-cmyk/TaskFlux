@@ -51,7 +51,7 @@ export default function DocumentsPage() {
         <div className="loading-center" style={{ height: 200 }}>Loading documents…</div>
       ) : docs.length === 0 ? (
         <div className="empty-state">
-          <div className="empty-icon">📄</div>
+          <div className="empty-icon" aria-hidden="true"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 16h5"/></svg></div>
           <p style={{ fontSize: 14, fontWeight: 500, color: 'var(--text-2)' }}>No documents yet</p>
           <p style={{ fontSize: 12 }}>Create your first document to get started</p>
           <button onClick={handleAdd} className="btn btn-secondary btn-sm" style={{ marginTop: 12 }}>

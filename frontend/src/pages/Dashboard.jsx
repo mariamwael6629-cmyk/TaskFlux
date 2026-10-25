@@ -107,7 +107,7 @@ export default function Dashboard() {
       ) : (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
           {/* Stat tiles */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 14 }}>
+          <div className="tf-stack" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 14 }}>
             {statTiles.map((s) => (
               <div key={s.label} className="stat-tile">
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -120,7 +120,7 @@ export default function Dashboard() {
           </div>
 
           {/* Bottom panels */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 280px', gap: 14 }}>
+          <div className="tf-stack" style={{ display: 'grid', gridTemplateColumns: '1fr 280px', gap: 14 }}>
             {/* Recent docs */}
             <div className="card">
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>

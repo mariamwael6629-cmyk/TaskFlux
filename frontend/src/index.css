@@ -4,54 +4,59 @@
 
 /* --- Tokens ------------------------------------------------- */
 :root {
-  --bg:        #05050f;
-  --surface:   #0c0c1c;
-  --sf2:       #111122;
-  --sf3:       #191930;
-  --border:    #202040;
-  --border-m:  #181835;
+  /* "Timetable" system: exercise-book paper with feint ruling and a red
+     margin, blue-black ink, and subject colours for status. See DESIGN.md. */
+  --bg:        #F4F2EA;
+  --surface:   #FFFEF9;
+  --sf2:       #FFFEF9;
+  --sf3:       #ECE9DE;
+  --border:    #D9D4C5;
+  --border-m:  #E4E0D3;
 
-  --text:      #e2e2f5;
-  --text-2:    #8484b8;
-  --text-3:    #484870;
+  --text:      #1B2238;
+  --text-2:    #4A5065;
+  --text-3:    #6C7082;
 
-  --accent:    #5050c8;
-  --accent-h:  #6464d8;
-  --accent-s:  rgba(80,80,200,.10);
-  --accent-b:  rgba(80,80,200,.28);
+  --accent:    #24366B;   /* blue-black ink */
+  --accent-h:  #2E4482;
+  --accent-s:  rgba(36,54,107,.08);
+  --accent-b:  rgba(36,54,107,.30);
 
-  --green:     #1ea882;
-  --green-s:   rgba(30,168,130,.10);
-  --green-b:   rgba(30,168,130,.28);
+  --green:     #2D7A4B;   /* science green: low / done */
+  --green-s:   rgba(45,122,75,.10);
+  --green-b:   rgba(45,122,75,.30);
 
-  --red:       #c04040;
-  --red-s:     rgba(192,64,64,.10);
-  --red-b:     rgba(192,64,64,.28);
+  --red:       #C0392B;   /* margin red: high priority, errors */
+  --red-s:     rgba(192,57,43,.09);
+  --red-b:     rgba(192,57,43,.30);
 
-  --amber:     #bf8828;
-  --amber-s:   rgba(191,136,40,.10);
-  --amber-b:   rgba(191,136,40,.28);
+  --amber:     #A86F12;   /* art yellow: medium */
+  --amber-s:   rgba(214,160,40,.16);
+  --amber-b:   rgba(168,111,18,.32);
 
-  --purple:    #9040cc;
-  --purple-s:  rgba(144,64,204,.10);
-  --purple-b:  rgba(144,64,204,.28);
+  --purple:    #6A4C93;   /* music: in review */
+  --purple-s:  rgba(106,76,147,.10);
+  --purple-b:  rgba(106,76,147,.30);
 
-  --r-sm:  6px;
-  --r:     10px;
-  --r-lg:  16px;
-  --r-xl:  24px;
+  --rule:      rgba(74,118,170,.16);   /* feint ruling */
+  --margin:    rgba(192,57,43,.45);    /* margin line */
 
-  --shadow-sm: 0 1px 4px rgba(0,0,0,.6);
-  --shadow:    0 4px 16px rgba(0,0,0,.5);
-  --shadow-lg: 0 10px 40px rgba(0,0,0,.7);
-  --shadow-ac: 0 4px 20px rgba(80,80,200,.35);
+  --r-sm:  4px;
+  --r:     6px;
+  --r-lg:  8px;
+  --r-xl:  10px;
+
+  --shadow-sm: 0 1px 2px rgba(27,34,56,.08);
+  --shadow:    0 4px 12px rgba(27,34,56,.10);
+  --shadow-lg: 0 14px 30px -12px rgba(27,34,56,.28);
+  --shadow-ac: none;
 }
 
 /* --- Reset -------------------------------------------------- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html, body, #root { height: 100%; background: var(--bg); }
 body {
-  font-family: 'Inter', 'DM Sans', sans-serif;
+  font-family: 'Atkinson Hyperlegible', system-ui, sans-serif;
   font-size: 14px;
   line-height: 1.55;
   color: var(--text);
@@ -59,11 +64,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; }
+h1, h2, h3, h4 { font-family: 'Bitter', Georgia, serif; font-weight: 600; }
 a { color: inherit; text-decoration: none; }
 button { font-family: inherit; }
 input, textarea, select { font-family: inherit; }
-input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(0.5); }
+
 
 /* --- Scrollbar --------------------------------------------- */
 ::-webkit-scrollbar { width: 4px; height: 4px; }
@@ -105,7 +110,8 @@ input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(0.5); }
   color: #fff;
   border-color: var(--accent);
 }
-.btn-primary:hover { background: var(--accent-h); border-color: var(--accent-h); box-shadow: var(--shadow-ac); }
+.btn-primary:hover { background: var(--accent-h); border-color: var(--accent-h); }
+.btn:active { transform: scale(.98); }
 
 .btn-secondary {
   background: var(--sf3);
@@ -176,7 +182,6 @@ input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(0.5); }
   padding: 3px 8px;
   border-radius: 999px;
   white-space: nowrap;
-  letter-spacing: .02em;
 }
 .badge-green  { background: var(--green-s);  color: var(--green);  border: 1px solid var(--green-b); }
 .badge-amber  { background: var(--amber-s);  color: var(--amber);  border: 1px solid var(--amber-b); }
@@ -188,11 +193,9 @@ input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(0.5); }
    TYPOGRAPHY HELPERS
    ============================================================ */
 .section-label {
-  font-size: 10px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: .09em;
-  color: var(--text-3);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-2);
 }
 .form-label { font-size: 12px; font-weight: 500; color: var(--text-2); }
 .form-group { display: flex; flex-direction: column; gap: 6px; }
@@ -217,7 +220,7 @@ input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(0.5); }
   top: -250px; left: 50%;
   transform: translateX(-50%);
   width: 900px; height: 900px;
-  background: radial-gradient(circle, rgba(80,80,200,.07) 0%, transparent 65%);
+  display: none;
   pointer-events: none;
 }
 .auth-card {
@@ -352,8 +355,8 @@ input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(0.5); }
   flex-direction: column;
   gap: 8px;
 }
-.stat-value { font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 700; line-height: 1; }
-.stat-label { font-size: 11px; color: var(--text-3); font-weight: 500; text-transform: uppercase; letter-spacing: .06em; }
+.stat-value { font-family: 'Bitter', Georgia, serif; font-variant-numeric: tabular-nums; font-size: 28px; font-weight: 700; line-height: 1; }
+.stat-label { font-size: 13px; color: var(--text-2); font-weight: 400; }
 
 /* ============================================================
    KANBAN
@@ -445,3 +448,41 @@ input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(0.5); }
    ============================================================ */
 .mobile-overlay { display: none; }
 @media (max-width: 768px) { .mobile-overlay { display: block; } }
+
+/* ============================================================
+   TIMETABLE LAYER
+   ============================================================ */
+::selection { background: var(--accent); color: var(--surface); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.btn-ghost { color: var(--text-2); }
+
+/* exercise-book page: feint ruling + red margin */
+.paper {
+  background-color: var(--surface);
+  background-image:
+    linear-gradient(90deg, transparent 47px, var(--margin) 47px, var(--margin) 48px, transparent 48px),
+    repeating-linear-gradient(180deg, transparent 0 27px, var(--rule) 27px 28px);
+  background-attachment: local;
+}
+
+/* auth: the card is the label on an exercise-book cover */
+.auth-bg { background: #2F4A73; }
+.auth-card {
+  background: var(--surface);
+  border: 0;
+  border-radius: 6px;
+  box-shadow: 0 0 0 6px var(--surface), 0 0 0 7px #1B2238, 0 24px 40px -18px rgba(0,0,0,.5);
+}
+
+/* Kanban cards: timetable blocks with a subject tab on top */
+.k-card { position: relative; border-radius: 4px; padding-top: 16px; box-shadow: var(--shadow-sm); }
+.k-card::before { content: ''; position: absolute; left: 12px; top: -1px; width: 28px; height: 5px; border-radius: 0 0 3px 3px; background: var(--k-tab, var(--border)); }
+.k-card:hover { border-color: var(--text-3); }
+.col-count { font-variant-numeric: tabular-nums; }
+.nav-item-active { box-shadow: inset 3px 0 0 var(--red) !important; border-color: transparent !important; background: var(--sf3) !important; color: var(--text) !important; }
+.empty-icon { opacity: .5; }
+@media (max-width: 768px) {
+  .tf-sidebar.open { position: fixed !important; left: 0; top: 0; bottom: 0; box-shadow: var(--shadow-lg); }
+  .page-wrapper { padding: 20px 16px; }
+  .tf-stack { grid-template-columns: minmax(0, 1fr) !important; }
+}

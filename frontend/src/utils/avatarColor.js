@@ -1,4 +1,4 @@
-const PALETTE = ['#6366f1', '#8b5cf6', '#06b6d4', '#10b981', '#f59e0b', '#ef4444', '#ec4899']
+const PALETTE = ['#24366B', '#6A4C93', '#2F6F8F', '#2D7A4B', '#A86F12', '#C0392B', '#8A4B2E']
 
 export default function avatarColor(initials) {
   if (!initials) return PALETTE[0]

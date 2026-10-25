@@ -108,7 +108,7 @@ export default function BoardPage() {
               }}
             >
               <div style={{ width: 6, height: 6, borderRadius: '50%', background: s.dot, flexShrink: 0 }} />
-              <span style={{ fontWeight: 700, color: s.color, fontFamily: 'Space Grotesk, sans-serif', fontSize: 16 }}>{s.value}</span>
+              <span style={{ fontWeight: 700, color: s.color, fontFamily: 'Bitter, Georgia, serif', fontSize: 16 }}>{s.value}</span>
               <span style={{ color: 'var(--text-3)', fontSize: 12 }}>{s.label}</span>
             </div>
           ))}
@@ -116,7 +116,7 @@ export default function BoardPage() {
       </div>
 
       {/* Board columns */}
-      <div style={{ flex: 1, overflowX: 'auto', overflowY: 'hidden' }}>
+      <div className="paper" style={{ flex: 1, overflowX: 'auto', overflowY: 'hidden', paddingLeft: 32 }}>
         <DragDropContext onDragEnd={onDragEnd}>
           <div style={{ display: 'flex', gap: 14, padding: '20px 24px', height: '100%', minWidth: 'max-content', alignItems: 'flex-start' }}>
             {board.columns.map((column) => (

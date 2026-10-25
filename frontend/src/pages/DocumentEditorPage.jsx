@@ -6,11 +6,11 @@ import Icons from '../icons/Icons'
 function renderMd(text) {
   return text.split('\n').map((line, i) => {
     if (line.startsWith('# '))
-      return <h1 key={i} style={{ fontSize: 24, fontWeight: 700, color: 'var(--text)', margin: '24px 0 12px', fontFamily: 'Space Grotesk, sans-serif' }}>{line.slice(2)}</h1>
+      return <h1 key={i} style={{ fontSize: 24, fontWeight: 700, color: 'var(--text)', margin: '24px 0 12px', fontFamily: 'Bitter, Georgia, serif' }}>{line.slice(2)}</h1>
     if (line.startsWith('## '))
-      return <h2 key={i} style={{ fontSize: 17, fontWeight: 600, color: 'var(--text)', margin: '18px 0 8px', paddingBottom: 8, borderBottom: '1px solid var(--border)', fontFamily: 'Space Grotesk, sans-serif' }}>{line.slice(3)}</h2>
+      return <h2 key={i} style={{ fontSize: 17, fontWeight: 600, color: 'var(--text)', margin: '18px 0 8px', paddingBottom: 8, borderBottom: '1px solid var(--border)', fontFamily: 'Bitter, Georgia, serif' }}>{line.slice(3)}</h2>
     if (line.startsWith('### '))
-      return <h3 key={i} style={{ fontSize: 14, fontWeight: 600, color: 'var(--text-2)', margin: '14px 0 6px', fontFamily: 'Space Grotesk, sans-serif' }}>{line.slice(4)}</h3>
+      return <h3 key={i} style={{ fontSize: 14, fontWeight: 600, color: 'var(--text-2)', margin: '14px 0 6px', fontFamily: 'Bitter, Georgia, serif' }}>{line.slice(4)}</h3>
     if (line.startsWith('- [x] '))
       return (
         <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '3px 0' }}>
@@ -96,7 +96,7 @@ export default function DocumentEditorPage() {
               style={{
                 fontSize: 17, fontWeight: 700, color: 'var(--text)',
                 background: 'transparent', border: 'none', outline: 'none',
-                flex: 1, minWidth: 0, fontFamily: 'Space Grotesk, sans-serif',
+                flex: 1, minWidth: 0, fontFamily: 'Bitter, Georgia, serif',
               }}
             />
           </div>

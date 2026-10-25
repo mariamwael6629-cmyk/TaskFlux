@@ -17,14 +17,14 @@ export default function KanbanCard({ card, index }) {
           {...provided.dragHandleProps}
           onClick={() => setExpanded((x) => !x)}
           className={`k-card${snapshot.isDragging ? ' k-card-dragging' : ''}`}
-          style={{ ...provided.draggableProps.style }}
+          style={{ ...provided.draggableProps.style, '--k-tab': card.priority === 'high' ? 'var(--red)' : card.priority === 'medium' ? 'var(--amber)' : 'var(--green)' }}
         >
           {/* Title row */}
           <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 8, marginBottom: 10 }}>
             <p style={{ fontSize: 13, fontWeight: 500, color: 'var(--text)', lineHeight: 1.45, flex: 1 }}>
               {card.title}
             </p>
-            <span style={{ color: 'var(--border)', fontSize: 12, flexShrink: 0, paddingTop: 1 }}>⠿</span>
+            <span aria-hidden="true" style={{ color: 'var(--text-3)', flexShrink: 0, paddingTop: 2, display: 'flex' }}><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><circle cx="4" cy="3" r="1"/><circle cx="8" cy="3" r="1"/><circle cx="4" cy="6" r="1"/><circle cx="8" cy="6" r="1"/><circle cx="4" cy="9" r="1"/><circle cx="8" cy="9" r="1"/></svg></span>
           </div>
 
           {/* Description (expanded) */}

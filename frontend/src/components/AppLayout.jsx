@@ -4,7 +4,7 @@ import Topbar from './Topbar'
 
 export default function AppLayout() {
   return (
-    <div style={{ display: 'flex', height: '100vh', background: '#020617', color: '#f1f5f9', overflow: 'hidden' }}>
+    <div style={{ display: 'flex', height: '100vh', background: 'var(--bg)', color: 'var(--text)', overflow: 'hidden' }}>
       <Sidebar />
       <div style={{ display: 'flex', flexDirection: 'column', flex: 1, minWidth: 0, overflow: 'hidden' }}>
         <Topbar />

@@ -5,13 +5,14 @@ import { useAuth } from './AuthContext'
 const AppCtx = createContext(null)
 export const useApp = () => useContext(AppCtx)
 
-const DEFAULT_WORKSPACE = { name: 'My Workspace', emoji: '🚀', color: '#6366f1' }
+const DEFAULT_WORKSPACE = { name: 'My Workspace', emoji: '🚀', color: '#24366B' }
 
 export function AppProvider({ children }) {
   const { user } = useAuth()
   const [workspaces, setWorkspaces] = useState([])
   const [activeWorkspaceId, setActiveWorkspaceId] = useState(null)
-  const [sidebarOpen, setSidebarOpen] = useState(true)
+  // Start collapsed on phones so the sidebar does not cover the page.
+  const [sidebarOpen, setSidebarOpen] = useState(() => typeof window === 'undefined' || window.innerWidth > 768)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
 
@@ -43,7 +44,7 @@ export function AppProvider({ children }) {
 
   const addWorkspace = useCallback(async (name) => {
     const emojis = ['🌟', '💎', '🔥', '🎯', '🌊', '⚡', '🦋']
-    const colors = ['#6366f1', '#8b5cf6', '#06b6d4', '#10b981', '#f59e0b', '#ef4444']
+    const colors = ['#24366B', '#6A4C93', '#2F6F8F', '#2D7A4B', '#A86F12', '#C0392B']
     const ws = await workspacesApi.createWorkspace({
       name,
       emoji: emojis[Math.floor(Math.random() * emojis.length)],
