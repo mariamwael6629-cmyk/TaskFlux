@@ -489,5 +489,5 @@ input, textarea, select { font-family: inherit; }
 /* Board on phones: columns snap one per swipe and fit the screen width. */
 @media (max-width: 768px) {
   .paper { scroll-snap-type: x mandatory; padding-left: 8px !important; }
-  .paper > div > div > div { scroll-snap-align: start; width: calc(100vw - 96px) !important; }
+  .paper > div > div { scroll-snap-align: start; width: calc(100vw - 96px) !important; }
 }
