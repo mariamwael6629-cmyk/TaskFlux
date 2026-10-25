@@ -25,7 +25,7 @@ export default function AddCardForm({ onAdd, onCancel }) {
       borderRadius: 'var(--r)',
       padding: 12,
       marginTop: 8,
-      boxShadow: '0 8px 32px rgba(80,80,200,.15)',
+      boxShadow: '0 8px 32px rgba(200,104,80,.15)',
     }}>
       <input
         autoFocus

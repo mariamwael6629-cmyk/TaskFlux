@@ -6,7 +6,7 @@ from pydantic import BaseModel, ConfigDict, Field
 class WorkspaceCreate(BaseModel):
     name: str = Field(min_length=1, max_length=120)
     emoji: str = "🚀"
-    color: str = "#6366f1"
+    color: str = "#D37E69"
 
 
 class WorkspaceOut(BaseModel):
@@ -24,7 +24,7 @@ class MemberCreate(BaseModel):
     name: str = Field(min_length=1, max_length=120)
     role: str = "Member"
     initials: str = "U"
-    color: str = "#6366f1"
+    color: str = "#D37E69"
     status: str = "online"
 
 

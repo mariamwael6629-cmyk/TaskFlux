@@ -4,25 +4,25 @@
 
 /* --- Tokens ------------------------------------------------- */
 :root {
-  --bg:        #05050f;
-  --surface:   #0c0c1c;
-  --sf2:       #111122;
-  --sf3:       #191930;
-  --border:    #202040;
-  --border-m:  #181835;
+  --bg:        #0B0A09;
+  --surface:   #161412;
+  --sf2:       #1D1A16;
+  --sf3:       #292420;
+  --border:    #402620;
+  --border-m:  #2B2722;
 
-  --text:      #e2e2f5;
-  --text-2:    #8484b8;
-  --text-3:    #484870;
+  --text:      #EEECE9;
+  --text-2:    #AA9E92;
+  --text-3:    #675C51;
 
-  --accent:    #5050c8;
-  --accent-h:  #6464d8;
-  --accent-s:  rgba(80,80,200,.10);
-  --accent-b:  rgba(80,80,200,.28);
+  --accent:    #C86850;
+  --accent-h:  #D37E69;
+  --accent-s:  rgba(200,104,80,.10);
+  --accent-b:  rgba(200,104,80,.28);
 
-  --green:     #1ea882;
-  --green-s:   rgba(30,168,130,.10);
-  --green-b:   rgba(30,168,130,.28);
+  --green:     #B39A62;
+  --green-s:   rgba(179,154,98,.12);
+  --green-b:   rgba(179,154,98,.30);
 
   --red:       #c04040;
   --red-s:     rgba(192,64,64,.10);
@@ -32,9 +32,9 @@
   --amber-s:   rgba(191,136,40,.10);
   --amber-b:   rgba(191,136,40,.28);
 
-  --purple:    #9040cc;
-  --purple-s:  rgba(144,64,204,.10);
-  --purple-b:  rgba(144,64,204,.28);
+  --purple:    #C95E43;
+  --purple-s:  rgba(201,94,67,.10);
+  --purple-b:  rgba(201,94,67,.28);
 
   --r-sm:  6px;
   --r:     10px;
@@ -44,7 +44,7 @@
   --shadow-sm: 0 1px 4px rgba(0,0,0,.6);
   --shadow:    0 4px 16px rgba(0,0,0,.5);
   --shadow-lg: 0 10px 40px rgba(0,0,0,.7);
-  --shadow-ac: 0 4px 20px rgba(80,80,200,.35);
+  --shadow-ac: 0 4px 20px rgba(200,104,80,.35);
 }
 
 /* --- Reset -------------------------------------------------- */

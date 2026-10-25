@@ -17,7 +17,7 @@
   top: -250px; left: 50%;
   transform: translateX(-50%);
   width: 900px; height: 900px;
-  background: radial-gradient(circle, rgba(80,80,200,.07) 0%, transparent 65%);
+  background: none;
   pointer-events: none;
 }
 .auth-card {

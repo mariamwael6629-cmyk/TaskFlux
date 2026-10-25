@@ -11,10 +11,10 @@ from app.schemas.workspace import MemberCreate, MemberOut, WorkspaceCreate, Work
 router = APIRouter(prefix="/api/workspaces", tags=["workspaces"])
 
 DEFAULT_COLUMNS = [
-    {"title": "To Do", "color": "#64748b"},
-    {"title": "In Progress", "color": "#6366f1"},
+    {"title": "To Do", "color": "#867869"},
+    {"title": "In Progress", "color": "#D37E69"},
     {"title": "Under Review", "color": "#f59e0b"},
-    {"title": "Done", "color": "#10b981"},
+    {"title": "Done", "color": "#B39A62"},
 ]
 
 

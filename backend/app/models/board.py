@@ -26,7 +26,7 @@ class Column(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     board_id: Mapped[int] = mapped_column(ForeignKey("boards.id"), nullable=False)
     title: Mapped[str] = mapped_column(String(120), nullable=False)
-    color: Mapped[str] = mapped_column(String(16), default="#64748b")
+    color: Mapped[str] = mapped_column(String(16), default="#867869")
     order: Mapped[float] = mapped_column(Float, default=0)
 
     board: Mapped["Board"] = relationship(back_populates="columns")

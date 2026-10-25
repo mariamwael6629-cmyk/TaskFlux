@@ -91,7 +91,7 @@ def create_board(
     board = Board(workspace_id=workspace_id, name=payload.name)
     db.add(board)
     db.flush()
-    for i, col in enumerate([{"title": "To Do", "color": "#64748b"}]):
+    for i, col in enumerate([{"title": "To Do", "color": "#867869"}]):
         db.add(Column(board_id=board.id, title=col["title"], color=col["color"], order=i))
     db.commit()
     db.refresh(board)
